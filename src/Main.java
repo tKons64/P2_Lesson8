@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,9 +39,34 @@ public class Main {
         shi.calculateRecipePrice();
         System.out.println(shi);
 
+        // Урок 7. Домашние задания
+        System.out.println();
+        System.out.println("Урок 7. Домашнее задание №2. Блок 2");
 
-
-
+        List<Integer> listOfValue = new ArrayList<>(20);
+        while (listOfValue.size() < 20) {
+            listOfValue.add((int) (Math.random() * 1000));
+        }
+        System.out.println(listOfValue);
+//      вариант №1
+//        List<Integer> listOfValueDelete = new ArrayList<>();
+//        for (int value: listOfValue) {
+//            if (!(value % 2 == 0)) {
+//                listOfValueDelete.add(value);
+//                //System.out.println(listOfValue.indexOf(value));
+//            }
+//        }
+//        System.out.println(listOfValueDelete);
+//        listOfValue.removeAll(listOfValueDelete);
+//        System.out.println(listOfValue)
+//      вариант №2
+        Iterator<Integer> listOfValueIterator= listOfValue.iterator();
+        while (listOfValueIterator.hasNext()) {
+            if (!(listOfValueIterator.next() % 2 == 0)) {
+                listOfValueIterator.remove();
+            }
+        }
+        System.out.println(listOfValue);
     }
 
     public static void addProduct(Set<Product> listOfProducts, Product product) {

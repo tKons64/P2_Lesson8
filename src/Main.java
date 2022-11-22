@@ -153,6 +153,25 @@ public class Main {
         // Урок 8. Домашние задания
         System.out.println();
         System.out.println("Урок 8. Домашнее задание №1. Блок 3");
+
+        // Урок 8. Домашние задания
+        System.out.println();
+        System.out.println("Урок 8. Домашнее задание №2. Блок 3");
+        Set<MultiplicationVariant> exampleSheet =new HashSet<>();
+        while (exampleSheet.size() < 15) {
+            int multiplied = (int) (Math.random() * 10);
+            int factor = (int) (Math.random() * 10);
+            int result = multiplied * factor;
+            String titleExample = multiplied + " * " + factor + " = " + result;
+
+            exampleSheet.add(new MultiplicationVariant(titleExample, multiplied, factor));
+        }
+        byte count = 0;
+        for (MultiplicationVariant multiplicationVariant : exampleSheet) {
+            count++;
+            System.out.print(count + ". ");
+            System.out.println(multiplicationVariant);
+        }
     }
 
     public static void addProduct(Set<Product> listOfProducts, Product product) {

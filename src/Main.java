@@ -8,6 +8,7 @@ import Transports.Car;
 import Transports.Transport;
 import Transports.Truck;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
@@ -81,7 +82,7 @@ public class Main {
         racingCars.add(trScania);
         racingCars.add(bsKamaz);
 
-        for (Transport racingCar: racingCars) {
+        for (Transport racingCar : racingCars) {
             printDataTransport(racingCar);
         }
 
@@ -142,7 +143,7 @@ public class Main {
 //        listOfValue.removeAll(listOfValueDelete);
 //        System.out.println(listOfValue)
 //      вариант №2
-        Iterator<Integer> listOfValueIterator= listOfValue.iterator();
+        Iterator<Integer> listOfValueIterator = listOfValue.iterator();
         while (listOfValueIterator.hasNext()) {
             if (!(listOfValueIterator.next() % 2 == 0)) {
                 listOfValueIterator.remove();
@@ -157,7 +158,7 @@ public class Main {
         // Урок 8. Домашние задания
         System.out.println();
         System.out.println("Урок 8. Домашнее задание №2. Блок 3");
-        Set<MultiplicationVariant> exampleSheet =new HashSet<>();
+        Set<MultiplicationVariant> exampleSheet = new HashSet<>();
         while (exampleSheet.size() < 15) {
             int multiplied = (int) (Math.random() * 10);
             int factor = (int) (Math.random() * 10);
@@ -172,7 +173,45 @@ public class Main {
             System.out.print(count + ". ");
             System.out.println(multiplicationVariant);
         }
+
+        // Урок 8. Домашние задания
+        System.out.println();
+        System.out.println("Урок 8. Домашнее задание №3. Блок 3");
+
+        Set<Passport> listOfPassports = new HashSet<>();
+        Passport Petrov = new Passport("123456789", "Петров", "Виктор", "Константинович", LocalDate.of(1955, 5, 31));
+        Passport Ivanova = new Passport("987654321", "Иванова", "Людмила", "Васильевна", LocalDate.of(1953, 9, 17));
+        Passport Sidorov = new Passport("123456789", "Сидоров", "Константин", "Викторович", LocalDate.of(1984, 12, 5));
+
+        addPassport(listOfPassports, Petrov);
+        addPassport(listOfPassports, Ivanova);
+        System.out.println(Petrov);
+        System.out.println(listOfPassports.size());
+        addPassport(listOfPassports, Sidorov);
+        System.out.println(Petrov);
+        System.out.println(listOfPassports.size());
+
     }
+
+    public static void addPassport(Set<Passport> listOfPassports, Passport passport) {
+        Passport tempPassport = null;
+        if (!listOfPassports.add(passport)) {
+            tempPassport = findPassport(listOfPassports, passport.getPassportID());
+        }
+        if (!(tempPassport == null)) {
+            tempPassport.updateTheDataThisPassport(passport);
+        }
+    }
+
+    public static Passport findPassport(Set<Passport> listOfPassports, String passportID) {
+        for (Passport passport : listOfPassports) {
+            if (passport.getPassportID().equals(passportID)) {
+                return passport;
+            }
+        }
+        return null;
+    }
+
 
     public static void addProduct(Set<Product> listOfProducts, Product product) {
 

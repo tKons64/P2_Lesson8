@@ -1,11 +1,11 @@
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
 
-
-    // Урок 7. Домашние задания
+        // Урок 7. Домашние задания
         System.out.println();
         System.out.println("Урок 7. Домашнее задание №1");
 
@@ -25,6 +25,25 @@ public class Main {
         System.out.println(listOfProducts.toString());
         delProduct(listOfProducts, tomatoes);
         System.out.println(listOfProducts.toString());
+
+        // Урок 7. Домашние задания
+        System.out.println();
+        System.out.println("Урок 7. Домашнее задание №1. Блок 2");
+
+        Set<Recipe> listOfRecipes = new HashSet<>();
+        Recipe borch = new Recipe("Борщ");
+        borch.addProducts(listOfProducts);
+        borch.calculateRecipePrice();
+        System.out.println(borch);
+
+        Recipe shi = new Recipe("Щи");
+        shi.addProducts(listOfProducts);
+        shi.calculateRecipePrice();
+        System.out.println(shi);
+
+
+
+
     }
 
     public static void addProduct(Set<Product> listOfProducts, Product product) {
@@ -33,6 +52,12 @@ public class Main {
             throw new RuntimeException("Продукт с таким именнем уже есть в списке!");
         }
 
+    }
+
+    public static void addRecipe(Set<Recipe> listOfRecipes, Recipe recipe) {
+        if (!listOfRecipes.add(recipe)) {
+            throw new RuntimeException("Рецепт с таким именнем уже есть в списке!");
+        }
     }
 
     public static void delProduct(Set<Product> listOfProducts, Product product) {
